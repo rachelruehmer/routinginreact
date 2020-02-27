@@ -15,8 +15,8 @@ class App extends React.Component {
           <Link to ="/people">View People</Link>
           <Switch>
             <Route exact path= "/" component= {Home}/>
-            <Route path= "/films" component= {Films}/>
-            <Route path= "/people" component= {People}/>
+            <Route exact path= "/films" component= {Films}/>
+            <Route exact path= "/people" component= {People}/>
           </Switch>
         </React.Fragment>
       </Router>

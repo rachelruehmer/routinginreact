@@ -1,20 +1,31 @@
-import React from 'react';
+import React from "react";
 
 class People extends React.Component {
+  constructor(props) {
+    super(props);
 
-    componentDidMount() {
-        fetch("https://ghibliapi.herokuapp.com/people")
-        .then((response) => {
-            return response.json();
-        })
-        .then((obj) => console.log(obj));
-    }
+    this.state = {
+      people: []
+    };
+  }
 
-    render() {
-        return (
-            <h1>This is the people page.</h1>
-        )
-    }
+  componentDidMount() {
+    fetch("https://ghibliapi.herokuapp.com/people")
+      .then(response => response.json())
+      .then(people => this.setState({ people }))
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <h1>People from Studio Ghibli Films</h1>
+        {this.state.people.map(people => {
+          return <h1>{people.name}</h1>;
+        })}
+      </React.Fragment>
+    );
+  }
 }
 
 export default People;
